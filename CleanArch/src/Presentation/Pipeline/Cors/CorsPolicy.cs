@@ -1,0 +1,19 @@
+namespace Presentation.Pipeline.Cors;
+
+public static class CorsPolicyExtensions
+{
+    public static void ConfigureCorsPolicy(this IServiceCollection services, IConfiguration configuration)
+    {
+        string corsOriginsConfig = configuration["AppSettings:CorsOrigins"] ?? "";
+        string[] origins = corsOriginsConfig.Split(",");
+
+        services.AddCors(opt =>
+            opt.AddDefaultPolicy(builder => builder
+                .WithOrigins(origins)
+                .AllowCredentials()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+            )
+        );
+    }
+}
