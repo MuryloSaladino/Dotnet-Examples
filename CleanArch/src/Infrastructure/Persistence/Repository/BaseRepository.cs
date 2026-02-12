@@ -1,4 +1,3 @@
-using Microsoft.EntityFrameworkCore;
 using Domain.Common;
 using Infrastructure.Persistence.Context;
 using Application.Data;

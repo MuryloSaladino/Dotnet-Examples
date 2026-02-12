@@ -15,7 +15,7 @@ public class LoggingBehavior<TRequest, TResponse>(
         TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
         stopwatch.Start();
-        var response = await next();
+        var response = await next(cancellationToken);
         stopwatch.Stop();
 
         var requestName = typeof(TRequest).Name;

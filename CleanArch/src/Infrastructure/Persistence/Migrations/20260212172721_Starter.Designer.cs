@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(SkillsContext))]
-    [Migration("20260129204051_StarterMigration")]
-    partial class StarterMigration
+    [Migration("20260212172721_Starter")]
+    partial class Starter
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -68,15 +68,6 @@ namespace Infrastructure.Persistence.Migrations
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("timestamptz")
                         .HasColumnName("deleted_at");
-
-                    b.Property<bool>("IsAdmin")
-                        .HasColumnType("boolean")
-                        .HasColumnName("is_admin");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("varchar(255)")
-                        .HasColumnName("password");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamptz")

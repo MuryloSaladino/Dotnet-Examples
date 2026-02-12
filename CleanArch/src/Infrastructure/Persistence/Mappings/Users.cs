@@ -24,14 +24,5 @@ public class UserConfiguration : BaseEntityConfiguration<User>
             .IsRequired();
         builder.HasIndex(u => u.Username)
             .IsUnique();
-
-        builder.Property(u => u.Password)
-            .HasColumnName("password")
-            .HasColumnType("varchar(255)")
-            .IsRequired();
-
-        builder.Property(u => u.IsAdmin)
-            .HasColumnName("is_admin")
-            .HasColumnType("boolean");
     }
 }

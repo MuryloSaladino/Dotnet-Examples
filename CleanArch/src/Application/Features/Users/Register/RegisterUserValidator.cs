@@ -12,11 +12,7 @@ public class RegisterUserValidator : AbstractValidator<RegisterUserRequest>
             .MinimumLength(3)
             .MaximumLength(35)
             .MustAsync(async (username, cancellationToken) =>
-                await usersRepository.FindByUsername(username, cancellationToken) is null
+                await usersRepository.ExistsByUsername(username, cancellationToken)
             );
-
-        RuleFor(u => u.Password)
-            .NotEmpty()
-            .MinimumLength(8);
     }
 }

@@ -5,6 +5,5 @@ public sealed record RegisterUserResponse(
     DateTime CreatedAt,
     DateTime? UpdatedAt,
     DateTime? DeletedAt,
-    string Username,
-    bool IsAdmin
+    string Username
 );

@@ -66,15 +66,6 @@ namespace Infrastructure.Persistence.Migrations
                         .HasColumnType("timestamptz")
                         .HasColumnName("deleted_at");
 
-                    b.Property<bool>("IsAdmin")
-                        .HasColumnType("boolean")
-                        .HasColumnName("is_admin");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("varchar(255)")
-                        .HasColumnName("password");
-
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamptz")
                         .HasColumnName("updated_at");

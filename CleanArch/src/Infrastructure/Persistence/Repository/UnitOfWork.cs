@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Npgsql;
 using Infrastructure.Persistence.Context;
 using Application.Data;
+using Application;
 
 namespace Infrastructure.Persistence.Repository;
 

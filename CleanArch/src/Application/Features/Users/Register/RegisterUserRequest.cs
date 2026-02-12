@@ -3,6 +3,5 @@ using MediatR;
 namespace Application.Features.Users.Register;
 
 public sealed record RegisterUserRequest(
-    string Username,
-    string Password
+    string Username
 ) : IRequest<RegisterUserResponse>;

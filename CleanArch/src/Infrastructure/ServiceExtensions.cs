@@ -7,8 +7,6 @@ using Infrastructure.Persistence.Repository.Users;
 using Infrastructure.Persistence.Repository.UserSkills;
 using Application.Data;
 using Application.Data.Repository;
-using Application.Contracts;
-using Infrastructure.Identity;
 
 namespace Infrastructure;
 
@@ -25,8 +23,5 @@ public static class ServiceExtensions
         services.AddScoped<ISkillsRepository, SkillRepository>();
         services.AddScoped<IUsersRepository, UserRepository>();
         services.AddScoped<IUserSkillsRepository, UserSkillsRepository>();
-
-        // IDENTITY
-        services.AddScoped<IPasswordHasher, PasswordHasher>();
     }
 }
