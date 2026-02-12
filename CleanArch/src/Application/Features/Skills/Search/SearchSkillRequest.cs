@@ -1,7 +1,8 @@
+using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Skills.Search;
 
-public sealed record FindSkillRequest(
+public sealed record SearchSkillRequest(
     string Name
-) : IRequest<List<FindSkillResponse>>;
+) : IRequest<List<Skill>>;
