@@ -5,10 +5,13 @@ namespace Application.Features.Skills.Assign;
 
 public sealed class AssignSkillValidator : AbstractValidator<AssignSkillRequest>
 {
-    public AssignSkillValidator(ISkillsRepository skillsRepository)
+    public AssignSkillValidator(ISkillsRepository skillsRepository, IUsersRepository usersRepository)
     {
-        RuleFor(request => request.SkillId)
-            .NotEmpty();
+        RuleFor(request => request.UserId)
+            .NotEmpty()
+            .MustAsync(async (userId, cancellationToken) =>
+                await usersRepository.ExistsById(userId, cancellationToken)
+            ); ;
 
         RuleFor(request => request.SkillId)
             .NotEmpty()

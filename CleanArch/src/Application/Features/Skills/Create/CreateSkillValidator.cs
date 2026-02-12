@@ -12,7 +12,7 @@ public sealed class CreateSkillValidator : AbstractValidator<CreateSkillRequest>
             .MinimumLength(2)
             .MaximumLength(25)
             .MustAsync(async (name, cancellationToken) =>
-                await skillsRepository.ExistsByName(name, cancellationToken)
+                !await skillsRepository.ExistsByName(name, cancellationToken)
             ); ;
     }
 }
