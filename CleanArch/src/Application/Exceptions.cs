@@ -5,3 +5,6 @@ public class RequestValidationException(string details)
 
 public class InvalidCredentialsException()
     : Exception("Invalid credentials.");
+
+public class EntityNotFoundException(string message = "Entity not found.")
+    : Exception(message);
