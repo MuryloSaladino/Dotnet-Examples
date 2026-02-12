@@ -13,6 +13,11 @@ public class SkillRepository(SkillsContext context)
             .Where(skill => skill.Id == id)
             .AnyAsync(cancellationToken);
 
+    public Task<bool> ExistsByName(string name, CancellationToken cancellationToken)
+        => Context.Set<Skill>()
+            .Where(skill => skill.Name == name)
+            .AnyAsync(cancellationToken);
+
     public Task<List<Skill>> SearchByName(string name, CancellationToken cancellationToken)
         => Context.Set<Skill>()
             .Where(skill => EF.Functions.ILike($"%{name}%", skill.Name))
