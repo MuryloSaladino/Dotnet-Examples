@@ -13,7 +13,7 @@ public class UserRepository(SkillsContext context)
             .Where(user => user.Username == username)
             .FirstOrDefaultAsync(cancellationToken);
 
-    public Task<List<User>> FindAndFilter(string filter, CancellationToken cancellationToken)
+    public Task<List<User>> SearchByUsername(string filter, CancellationToken cancellationToken)
         => Context.Set<User>()
             .Where(user => EF.Functions.ILike($"%{filter}%", user.Username))
             .ToListAsync(cancellationToken);
