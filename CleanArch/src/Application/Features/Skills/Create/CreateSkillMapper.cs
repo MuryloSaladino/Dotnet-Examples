@@ -8,5 +8,6 @@ public sealed class CreateSkillMapper : Profile
     public CreateSkillMapper()
     {
         CreateMap<CreateSkillRequest, Skill>();
+        CreateMap<Skill, CreateSkillResponse>();
     }
 }

@@ -1,8 +1,7 @@
-using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Skills.Create;
 
 public sealed record CreateSkillRequest(
     string Name
-) : IRequest<Skill>;
+) : IRequest<CreateSkillResponse>;

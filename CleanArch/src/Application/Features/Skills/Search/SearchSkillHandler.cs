@@ -1,16 +1,18 @@
 using Application.Data.Repository;
-using Domain.Entities;
+using AutoMapper;
 using MediatR;
 
 namespace Application.Features.Skills.Search;
 
 public sealed class FindSkillHandler(
-    ISkillsRepository skillsRepository
-) : IRequestHandler<SearchSkillRequest, List<Skill>>
+    ISkillsRepository skillsRepository,
+    IMapper mapper
+) : IRequestHandler<SearchSkillRequest, List<SearchSkillResponse>>
 {
-    public async Task<List<Skill>> Handle(
+    public async Task<List<SearchSkillResponse>> Handle(
         SearchSkillRequest request, CancellationToken cancellationToken)
     {
-        return await skillsRepository.SearchByName(request.Name, cancellationToken);
+        var skills = await skillsRepository.SearchByName(request.Name ?? "", cancellationToken);
+        return mapper.Map<List<SearchSkillResponse>>(skills);
     }
 }

@@ -10,9 +10,9 @@ public sealed class CreateSkillHandler(
     ISkillsRepository skillsRepository,
     IUnitOfWork unitOfWork,
     IMapper mapper
-) : IRequestHandler<CreateSkillRequest, Skill>
+) : IRequestHandler<CreateSkillRequest, CreateSkillResponse>
 {
-    public async Task<Skill> Handle(
+    public async Task<CreateSkillResponse> Handle(
         CreateSkillRequest request, CancellationToken cancellationToken)
     {
         var skill = mapper.Map<Skill>(request);
@@ -21,6 +21,6 @@ public sealed class CreateSkillHandler(
 
         await unitOfWork.Save(cancellationToken);
 
-        return skill;
+        return mapper.Map<CreateSkillResponse>(skill);
     }
 }
