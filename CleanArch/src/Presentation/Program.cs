@@ -26,7 +26,7 @@ builder.Services.AddControllers().AddJsonOptions(op =>
 
 // SWAGGER
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddOpenApi();
 
 
 var app = builder.Build();
@@ -37,8 +37,12 @@ var dataContext = serviceScope.ServiceProvider.GetService<SkillsContext>()
 
 await dataContext.Database.EnsureCreatedAsync();
 
-app.UseSwagger();
-app.UseSwaggerUI();
+
+if (app.Environment.IsDevelopment())
+{
+    app.MapOpenApi();
+}
+
 app.UseCors();
 app.UseErrorHandler();
 app.MapControllers();
