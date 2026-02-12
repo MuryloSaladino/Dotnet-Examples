@@ -26,7 +26,7 @@ builder.Services.AddControllers().AddJsonOptions(op =>
 
 // SWAGGER
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddOpenApi();
+builder.Services.AddSwaggerGen();
 
 
 var app = builder.Build();
@@ -40,7 +40,8 @@ await dataContext.Database.EnsureCreatedAsync();
 
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseCors();

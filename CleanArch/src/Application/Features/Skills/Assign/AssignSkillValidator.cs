@@ -11,13 +11,15 @@ public sealed class AssignSkillValidator : AbstractValidator<AssignSkillRequest>
             .NotEmpty()
             .MustAsync(async (userId, cancellationToken) =>
                 await usersRepository.ExistsById(userId, cancellationToken)
-            ); ;
+            )
+            .WithMessage("Invalid user id.");
 
         RuleFor(request => request.SkillId)
             .NotEmpty()
             .MustAsync(async (skillId, cancellationToken) =>
                 await skillsRepository.ExistsById(skillId, cancellationToken)
-            );
+            )
+            .WithMessage("Invalid skill id.");
 
         RuleFor(request => request.Level)
             .NotEmpty();

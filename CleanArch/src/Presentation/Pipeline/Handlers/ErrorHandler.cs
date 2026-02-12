@@ -25,7 +25,8 @@ public static class ErrorHandlerExtensions
                     _ => StatusCodes.Status500InternalServerError,
                 };
 
-                await context.Response.WriteAsync(JsonSerializer.Serialize(contextFeature.Error));
+                var messageObject = JsonSerializer.Serialize(new { message = contextFeature.Error.Message });
+                await context.Response.WriteAsync(messageObject);
             });
         });
 }
